@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    </link>
+    <link rel="stylesheet" href="css/all.css">
+
+    <title>PM 2.5 Monitor</title>
+    <link rel="shortcut icon" href="images/icon.png">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light nav-color">
+        <a class="navbar-brand" href="#">EN 空氣品質監測</a>
+    </nav>
+
+    <div class="container py-3">
+        <div id="app">
+            <!-- 下拉選單 -->
+            <select name="" id="" class="form-control mb-3" v-model="filter">
+                <option value="">--- 所有城市 ---</option>
+                <option v-for="(item, index) in location" :key="index" :value="item">{{item}}</option>
+            </select>
+
+            <!-- 星號關注 -->
+            <div>
+                <h4>關注城市</h4>
+                <div class="card-columns">
+                    <card v-for="(item, index) in siteData" :data="item" :key="index" @event="siteNameStar">
+                        <template slot="icon">
+                            <i class="fas fa-star"></i>
+                        </template>
+                    </card>
+                </div>
+            </div>
+
+            <!-- 卡片元件 -->
+            <hr>
+            <div class="card-columns">
+                <card v-for="(item, index) in filterData" :data="item" :key="index" @event="siteNameStar"></card>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="text-center nav-color py-3 text-info">
+        <h6>PM 2.5 Monitor</h6>
+        <p>個人練習作品，非商業用途　|　資訊來源：行政院環境保護署</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <!-- Vue first, then jQuery, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"
+        integrity="sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="js/all.js"></script>
+</body>
+
+</html>
